@@ -14,11 +14,88 @@ interface ContributionGridProps {
 
 const WEEKS = 53;
 const DAYS = 7;
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const WEEKDAYS = ["Mon", "", "Wed", "", "Fri", "", "Sun"];
+const MONTHS = ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"];
+const WEEKDAYS = ["Lun", "", "Mer", "", "Ven", "", "Dim"];
 
 // Font data for text rendering (5x7 pixel font)
 const FONT: Record<string, number[][]> = {
+  'A': [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+  ],
+  'B': [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+  ],
+  'C': [
+    [0, 1, 1, 1],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [0, 1, 1, 1],
+  ],
+  'D': [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+  ],
+  'E': [
+    [1, 1, 1, 1],
+    [1, 0, 0, 0],
+    [1, 1, 1, 0],
+    [1, 0, 0, 0],
+    [1, 1, 1, 1],
+  ],
+  'F': [
+    [1, 1, 1, 1],
+    [1, 0, 0, 0],
+    [1, 1, 1, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+  ],
+  'G': [
+    [0, 1, 1, 1],
+    [1, 0, 0, 0],
+    [1, 0, 1, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 1],
+  ],
+  'H': [
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+  ],
+  'I': [
+    [1, 1, 1],
+    [0, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+    [1, 1, 1],
+  ],
+  'J': [
+    [0, 0, 1, 1],
+    [0, 0, 0, 1],
+    [0, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+  ],
+  'K': [
+    [1, 0, 0, 1],
+    [1, 0, 1, 0],
+    [1, 1, 0, 0],
+    [1, 0, 1, 0],
+    [1, 0, 0, 1],
+  ],
   'L': [
     [1, 0, 0, 0],
     [1, 0, 0, 0],
@@ -26,8 +103,64 @@ const FONT: Record<string, number[][]> = {
     [1, 0, 0, 0],
     [1, 1, 1, 1],
   ],
+  'M': [
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+  ],
+  'N': [
+    [1, 0, 0, 1],
+    [1, 1, 0, 1],
+    [1, 0, 1, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+  ],
   'O': [
     [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+  ],
+  'P': [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+  ],
+  'Q': [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 1, 0],
+    [0, 1, 0, 1],
+  ],
+  'R': [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+    [1, 0, 1, 0],
+    [1, 0, 0, 1],
+  ],
+  'S': [
+    [0, 1, 1, 1],
+    [1, 0, 0, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 1],
+    [1, 1, 1, 0],
+  ],
+  'T': [
+    [1, 1, 1, 1],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+  ],
+  'U': [
+    [1, 0, 0, 1],
     [1, 0, 0, 1],
     [1, 0, 0, 1],
     [1, 0, 0, 1],
@@ -40,12 +173,62 @@ const FONT: Record<string, number[][]> = {
     [0, 1, 1, 0],
     [0, 0, 0, 0],
   ],
-  'E': [
+  'W': [
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
     [1, 1, 1, 1],
+    [0, 1, 1, 0],
+  ],
+  'X': [
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+  ],
+  'Y': [
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+  ],
+  'Z': [
+    [1, 1, 1, 1],
+    [0, 0, 1, 0],
+    [0, 1, 0, 0],
     [1, 0, 0, 0],
+    [1, 1, 1, 1],
+  ],
+  // Ajout des chiffres
+  '0': [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+  ],
+  '1': [
+    [0, 1, 0],
+    [1, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+    [1, 1, 1],
+  ],
+  '2': [
     [1, 1, 1, 0],
+    [0, 0, 0, 1],
+    [0, 1, 1, 0],
     [1, 0, 0, 0],
     [1, 1, 1, 1],
+  ],
+  '3': [
+    [1, 1, 1, 0],
+    [0, 0, 0, 1],
+    [0, 1, 1, 0],
+    [0, 0, 0, 1],
+    [1, 1, 1, 0],
   ],
 };
 
@@ -224,11 +407,11 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
   };
 
   return (
-    <div className="space-y-6">
-      <div className="bg-card/30 backdrop-blur-xl rounded-xl p-6 shadow-lg border border-border/50">
-        <div className="flex">
+    <div className="space-y-6 w-full">
+      <div className="bg-card/30 backdrop-blur-xl rounded-xl p-4 sm:p-6 shadow-lg border border-border/50">
+        <div className="flex w-full">
           {/* Weekday Labels */}
-          <div className="flex flex-col gap-[2px] mr-2 pt-6 text-sm text-muted-foreground">
+          <div className="flex flex-col gap-[2px] mr-2 pt-6 text-xs sm:text-sm text-muted-foreground">
             {WEEKDAYS.map((day, i) => (
               <div key={i} className="h-[10px] flex items-center justify-end pr-2">
                 {day}
@@ -238,12 +421,11 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
 
           <div className="flex-1">
             {/* Month Labels */}
-            <div className="flex text-sm text-muted-foreground mb-2">
+            <div className="flex text-xs sm:text-sm text-muted-foreground mb-2 w-full">
               {MONTHS.map((month, i) => (
                 <div
                   key={i}
-                  className="flex-1"
-                  style={{ textAlign: i === 0 ? "left" : "center" }}
+                  className="flex-1 text-center"
                 >
                   {month}
                 </div>
@@ -251,15 +433,15 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
             </div>
 
             {/* Grid */}
-            <div className="flex gap-[2px] relative">
+            <div className="flex gap-[2px] w-full">
               {grid.map((week, weekIndex) => (
-                <div key={weekIndex} className="flex flex-col gap-[2px]">
+                <div key={weekIndex} className="flex-1 flex flex-col gap-[2px]">
                   {week.map((value, dayIndex) => (
                     <motion.button
                       key={`${weekIndex}-${dayIndex}`}
                       whileHover={{ scale: 1.2 }}
                       className={cn(
-                        "w-[10px] h-[10px] rounded-sm transition-colors",
+                        "w-full aspect-square rounded-sm transition-colors",
                         getCellColor(value),
                         previewGrid[weekIndex][dayIndex] > 0 && getCellColor(intensity, true)
                       )}
@@ -274,7 +456,7 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
               {/* Tooltip */}
               {showTooltip && (
                 <div
-                  className="absolute bg-popover text-popover-foreground px-3 py-2 rounded-md text-sm whitespace-pre z-50 pointer-events-none shadow-md"
+                  className="absolute bg-popover text-popover-foreground px-3 py-2 rounded-md text-xs sm:text-sm whitespace-pre z-50 pointer-events-none shadow-md"
                   style={{
                     left: `${tooltipPosition.x}px`,
                     top: `${tooltipPosition.y}px`,
@@ -287,9 +469,26 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
             </div>
           </div>
         </div>
+
+        {/* Text input field */}
+        {selectedTool === "text" && (
+          <div className="mt-4">
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value.toUpperCase())}
+              placeholder="Entrez votre texte"
+              className="w-full px-3 py-2 rounded-md border border-border bg-background text-foreground text-sm"
+              maxLength={10}
+            />
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Maximum 10 caractères
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Commit Schedule Table */}
+      {/* CommitSchedule component */}
       <CommitSchedule grid={grid} getDateForCell={getDateForCell} />
     </div>
   );
