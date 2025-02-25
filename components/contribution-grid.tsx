@@ -169,7 +169,7 @@ export function ContributionGrid({ selectedTool, intensity }: ContributionGridPr
     }
   };
 
-  const handleCellHover = (week: number, day: number, event: React.MouseEvent) => {
+  const handleCellHover = (week: number, day: number, event: React.MouseEvent<HTMLButtonElement>) => {
     setHoveredCell({ week, day });
     
     // Update tooltip
